@@ -1,0 +1,16 @@
+extends ../layout/index
+
+block contenido
+    div.col.text-center.mb-5
+        h1.mt-5.p-3 Ecommerce 
+        h4.m-3.text-capitalize= pagina
+
+        div.container.col-5.mt-5
+            form#formMessages.border.p-2.m-3.shadow
+                h5 Usuario: 
+                    p #{username}
+                hr
+                #msg
+                hr
+                input#message(type="text" class="form-control" placeholder="Mensaje")
+                button#btnEnviar.mt-3(type="submit" class="btn btn-primary" email=username) Enviar

@@ -1,0 +1,48 @@
+extends ../layout/index
+
+block contenido
+    div.col.text-center.mb-5
+        h1.mt-5.p-3 Ecommerce 
+        h4.m-3.text-capitalize= pagina
+
+        div.container.col.mt-5.border.shadow.card.p-0
+
+            if products.length
+                table.table.table-hover
+                    thead 
+                        tr
+                            th(scope="col") Image
+                            th(scope="col") Producto
+                            th(scope="col") Cantidad
+                            th(scope="col") Unidad
+                            th(scope="col") Precio
+                            th(scope="col") Eliminar
+                    tbody#listaProds   
+                        - var total = 0;
+                            each product in products                            
+                                tr
+                                    td 
+                                        img(width="70" src= product.image)
+                                    td 
+                                        p.mt-4 #{product.name}
+                                    td
+                                        div.row.mt-3.align-items-center
+                                            button#addProd.col.btn.btn-primary.rounded-0.fs-5.p-0.align-items-center(data-id=product._id funcion="subtract" onclick="location.reload()") -
+                                            p.col.m-0 #{product.qty}
+                                            button#addProd.col.btn.btn-primary.rounded-0.fs-5.p-0(data-id=product._id funcion="add" onclick="location.reload()") +
+                                    td
+                                        p.mt-4 $ #{product.price}
+                                    td
+                                        p.mt-4 $ #{product.price * product.qty}
+                                    td
+                                        button#addProd.btn.btn-danger.rounded-0.mt-3.fs-5.py-0(data-id=product._id funcion="delete" onclick="location.reload()") x
+                                - total= product.price * product.qty + total;
+                h4 Total a Pagar: $#{total}
+                form.border.p-2.m-3(method="POST" action=`/api/buying/${userId}/${cartId}`)
+                    h5.m-3 Ingresa direccion de envio para concretar la compra
+                    div.mt-3.col-6.input-group                     
+                        input(id="" placeholder="Tu Direccion" type="text" name="shipping_address" class="form-control")
+                        button(type="submit" class="btn btn-success") COMPRAR
+            else
+                h4.alert.alert-danger.fw-semibold.text-center El carrito se encuentra vacio
+            

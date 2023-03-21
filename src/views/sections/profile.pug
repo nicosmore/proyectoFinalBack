@@ -1,0 +1,18 @@
+extends ../layout/index
+
+block contenido
+    div.col.text-center.mb-5
+        h1.mt-5.p-3 Ecommerce      
+        h4.m-3.text-capitalize= pagina
+
+        div.container.col-5.mt-5.border.shadow.card.p-0
+            h5.text-capitalize.card-header Tus Datos
+            div.mt-3
+                p.fs-6.text-capitalize Nombre: #{user.name}
+            div.mt-3
+                p.fs-6.text-capitalize Apellido: #{user.lastname}
+            div.mt-3
+                p.fs-6.text-capitalize Telefono: #{user.phone}
+            div.mt-3
+                p.fs-6.text-capitalize Email: #{user.email}
+                

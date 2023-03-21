@@ -1,0 +1,26 @@
+extends ../layout/index
+
+block contenido
+    div.col.text-center
+        h1 Ecommerce      
+       
+        if errores 
+            div(class="")
+                each error in errores 
+                    p= error.msg 
+
+        div.container.col-5.mt-5
+            form.border.p-2.m-3.shadow(method="POST" action="/api/auth/login") 
+                h4.m-3= pagina
+                div
+                    label(for="email" class="form-label") Ingresa tu Email 
+                    input(id="exampleInputEmail1" placeholder="Tu Email" type="email" name="username" class="form-control" aria-describedby="emailHelp")                        
+                div.mt-3
+                    label(for="password" class="form-label") Password 
+                    input( id="exampleInputPassword1" placeholder="Tu Password" type="password" name="password" class="form-control")
+
+                div.m-3
+                    a(href="/api/register") No tienes Cuenta? Crea una 
+                    
+                button(type="submit" class="btn btn-primary") Ingresar                           
+                    

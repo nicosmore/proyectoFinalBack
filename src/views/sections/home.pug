@@ -1,0 +1,20 @@
+extends ../layout/index
+
+block contenido
+    div.col.text-center.mb-5
+        h1.mt-5.p-3 Ecommerce 
+       
+        h4.m-3.text-capitalize= pagina
+        div
+            div#listaProds.mt-5.d-flex.flex-wrap.justify-content-center
+                if products.length
+                    each product in products
+                        div.card.m-3.p-2.col-sm-5.col-md-4.col-lg-3.text-center.rounded-0.shadow(data-id= product._id)
+                            img(src= product.image)
+                            div.card-body
+                            h5.card-title.text-capitalize #{product.name}
+                            p.card-subtitle.text-muted categoria: #{product.category}
+                            p.card-text.fs-5 $ #{product.price}
+                            a.btn.btn-outline-primary.rounded-0.agregar-carrito(data-id= product._id funcion="add") Agregar
+                else
+                    h4.alert.alert-danger.fw-semibold.text-center No se encontraron Productos
