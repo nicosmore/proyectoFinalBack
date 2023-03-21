@@ -1,11 +1,20 @@
 **Proyecto Final**
 **Alumno: Nicolas Moreira**
 
+**Crear .env antes de ejecutar**
+    - NODE_ENV="development"
+    - PORT=8080
+    - DB_NAME="entregaFinal"
+    - DB_PASSWORD="Elfacha4374"
+    - DATASOURCE="mongo"
+    - SESSION_SECRET="top-secret-51"
+    - TEST_MAIL="kade.murray@ethereal.email"
+    - PASSWORD_MAIL="wDagthBqgMB6SFzhqy"
 
 **Routes**
 
 **""/""** 
-    *Muestra datos del servidor*
+    - GET Muestra datos del servidor
 
 **"/api/products"**
     - POST "/" ingreso de products por body (name, description, code, image, price, category, stock)
